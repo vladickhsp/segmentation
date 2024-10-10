@@ -1,47 +1,69 @@
 # README for Predict.py Setup
 
-## Опис проекту
-Цей проект дозволяє виконувати передбачення на основі навчених моделей Detectron2 для сегментації зображень. Сценарій `predict.py` використовує бібліотеку Detectron2 для завантаження попередньо навчених ваг та виконання передбачень на наданому зображенні.
+## Project Description
+This project allows you to make predictions based on trained Detectron2 models for image segmentation. The `predict.py` script uses the Detectron2 library to load pre-trained weights and make predictions on a given image.
 
-## Вимоги до середовища
-Для виконання проекту необхідно налаштувати Python-середовище та встановити всі необхідні залежності. Рекомендується використовувати віртуальне середовище для уникнення конфліктів між бібліотеками.
+## Dataset Structure
+```
+dataset-directory/
+├─ README.dataset.txt
+├─ README.roboflow.txt
+├─ train
+│  ├─ train-image-1.jpg
+│  ├─ train-image-2.jpg
+│  ├─ ...
+│  └─ _annotations.coco.json
+├─ test
+│  ├─ test-image-1.jpg
+│  ├─ test-image-2.jpg
+│  ├─ ...
+│  └─ _annotations.coco.json
+└─ valid
+   ├─ valid-image-1.jpg
+   ├─ valid-image-2.jpg
+   ├─ ...
+   └─ _annotations.coco.json
+```
 
-### Залежності
-Нижче наведено список всіх залежностей, які були використані в проекті. Встановлення їх відбувається за допомогою `pip` або `conda`.
+## Environment Requirements
+To run the project, you need to set up a Python environment and install all necessary dependencies. It is recommended to use a virtual environment to avoid conflicts between libraries.
 
-1. **Python**: Версія 3.10 або вище.
+### Dependencies
+Below is a list of all dependencies used in the project. Installation can be done using `pip` or `conda`.
 
-2. **Torch** (з підтримкою CUDA або без неї)
-   - Встановлення без CUDA (для CPU):
+1. **Python**: Version 3.10 or higher.
+
+2. **Torch** (with or without CUDA support)
+   - Installation without CUDA (for CPU):
      ```bash
      pip install torch
      ```
-   - Встановлення з підтримкою CUDA (якщо використовується GPU):
+   - Installation with CUDA support (if using a GPU):
      ```bash
      pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117
      ```
 
-3. **Detectron2**: Офіційна бібліотека для комп'ютерного бачення від Facebook.
+3. **Detectron2**: Official computer vision library from Facebook.
    ```bash
    pip install 'git+https://github.com/facebookresearch/detectron2.git'
    ```
 
-4. **OpenCV**: Для роботи із зображеннями та візуалізації результатів.
+4. **OpenCV**: For working with images and visualizing results.
    ```bash
    pip install opencv-python
    ```
 
-5. **Matplotlib**: Для візуалізації результатів сегментації (оскільки `cv2.imshow()` не працює на MacOS).
+5. **Matplotlib**: For visualizing segmentation results (since `cv2.imshow()` does not work properly on MacOS).
    ```bash
    pip install matplotlib
    ```
 
-6. **fvcore та iopath**: Бібліотеки, що автоматично встановлюються разом із Detectron2, потрібні для роботи з конфігураційними файлами.
+6. **fvcore and iopath**: Libraries that are automatically installed with Detectron2, required for working with configuration files.
 
-### Віртуальне середовище (рекомендація)
-Рекомендується створити віртуальне середовище для управління залежностями.
+### Virtual Environment (Recommendation)
+It is recommended to create a virtual environment to manage dependencies.
 
-Для створення віртуального середовища виконайте наступні команди:
+To create a virtual environment, run the following commands:
 
 ```bash
 python3 -m venv detectron_env
@@ -49,21 +71,20 @@ source detectron_env/bin/activate  # Linux/MacOS
 detectron_env\Scripts\activate   # Windows
 ```
 
-Після активації середовища, встановіть всі залежності, вказані вище.
+After activating the environment, install all the dependencies listed above.
 
-## Виконання проекту
-Після того, як всі залежності встановлені, ви можете виконати скрипт `predict.py` для передбачення. Перед запуском переконайтеся, що всі шляхи до файлів (модель, зображення, анотації) правильно вказані в коді.
+## Running the Project
+Once all dependencies are installed, you can run the `predict.py` script to make predictions. Before running, ensure that all file paths (model, image, annotations) are correctly specified in the code.
 
-Запуск скрипта:
+Run the script:
 
 ```bash
 python /Users/vladislavtruhanovskiy/Desktop/log/predict.py
 ```
 
-## Примітки
-- Пам'ятайте, що для MacOS краще використовувати `matplotlib` для відображення результатів, оскільки `cv2.imshow()` може не працювати коректно.
-- Якщо ви використовуєте GPU, переконайтеся, що у вас встановлені драйвери NVIDIA та CUDA.
+## Notes
+- Remember that for MacOS, it is better to use `matplotlib` for displaying results, as `cv2.imshow()` may not work properly.
+- If you are using a GPU, make sure you have NVIDIA drivers and CUDA installed.
 
-## Контактна інформація
-Якщо виникли питання або проблеми, звертайтесь за адресою: [email@example.com].
-
+## Contact Information
+If you have any questions or issues, please contact: [email@example.com].
